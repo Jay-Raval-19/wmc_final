@@ -42,7 +42,7 @@ router.get('/fetch-data', async (req, res) => {
     } catch (e) {
       console.error(e);
     } finally {
-      await client.close();
+      // await client.close();
     }
   }
 
