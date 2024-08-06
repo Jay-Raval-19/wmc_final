@@ -1,8 +1,8 @@
 import React from 'react';
-import clip1 from './../images/clip1.mp4';
-import clip2 from './../images/clip2.mp4';
-import clip3 from './../images/clip3.mp4';
-import clip4 from './../images/clip4.mp4';
+import clip1 from './../videos/clip1.mp4';
+import clip2 from './../videos/clip2.mp4';
+import clip3 from './../videos/clip3.mp4';
+import clip4 from './../videos/clip4.mp4';
 import './VideoComp.css'; // Import the CSS file
 
 const VideoComp = () => {
