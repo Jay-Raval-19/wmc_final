@@ -6,13 +6,18 @@ import { auth } from '../firebaseconfig';
 import cartbg from './../images/cartbg.jpg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ScrollToTop from './ScrollToTop';
+
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
-  const user = auth.currentUser;
-  const [deletedItems, setDeletedItems] = useState([]); // State to keep track of deleted items
+  const [deletedItems, setDeletedItems] = useState([]);
   const [iconColor, setIconColor] = useState({});
-  const [subtotal, setSubtotal] = useState(0); // State for subtotal
+  const [subtotal, setSubtotal] = useState(0);
+  const [couponCode, setCouponCode] = useState('');
+  const [message, setMessage] = useState('');
+  const [totalWithTax, setTotalWithTax] = useState(0);
+  
+  const user = auth.currentUser;
 
   // Function to calculate subtotal
   const calculateSubtotal = () => {
@@ -21,7 +26,7 @@ const Cart = () => {
       const price = parseFloat(item.Price.replace(/[$,]/g, ''));
       total += price;
     });
-    return total.toFixed(2); // Ensure subtotal is formatted to 2 decimal places
+    return total.toFixed(2);
   };
 
   const handleGetCart = async () => {
@@ -37,9 +42,10 @@ const Cart = () => {
       if (response.ok) {
         if (Array.isArray(data)) {
           setCartItems(data);
-          // Calculate subtotal when cart items are set or updated
           const total = calculateSubtotal();
           setSubtotal(total);
+          const tax = 0.18;
+          setTotalWithTax((parseFloat(total) + parseFloat(total) * tax).toFixed(2));
         } else {
           setError('Unexpected data format.');
         }
@@ -51,19 +57,16 @@ const Cart = () => {
       console.error("Error:", error);
     }
   };
-  const totalWithTax = (parseFloat(subtotal) + parseFloat(subtotal) * 0.18).toFixed(2);
+
   useEffect(() => {
     handleGetCart();
   }, [user]);
 
   useEffect(() => {
-    // Recalculate subtotal whenever cartItems change
     setSubtotal(calculateSubtotal());
-  }, [cartItems]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+    const tax = 0.18;
+    setTotalWithTax((parseFloat(subtotal) + parseFloat(subtotal) * tax).toFixed(2));
+  }, [cartItems, subtotal]);
 
   const handleDeleteItem = async (itemId) => {
     if (!user) {
@@ -81,8 +84,7 @@ const Cart = () => {
           userId: user.email,
           itemId: itemId,
         }),
-      }
-    );
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -91,9 +93,7 @@ const Cart = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Remove the deleted item from cartItems immediately
         setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
-        // Optionally, update deleted items state or show a success message
         setDeletedItems((prevDeleted) => [...prevDeleted, itemId]);
       } else {
         setError(data.message || 'Failed to delete item.');
@@ -104,17 +104,29 @@ const Cart = () => {
     }
   };
 
-
   const handleApplyCoupon = () => {
-    // Implement apply coupon logic
+    const validCheatCodes = ['CHEAT20','BUZZOFF'];
+
+    if (validCheatCodes.includes(couponCode.toUpperCase())) {
+      const discount = 0.20; // 20%
+      const discountedTotal = (parseFloat(totalWithTax) * (1 - discount)).toFixed(2);
+      setTotalWithTax(discountedTotal);
+      setMessage('Coupon applied! 20% discount applied to your total.');
+    } else {
+      setMessage('Invalid coupon code.');
+    }
   };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="cartpage">
       <ScrollToTop/>
       <h2 className='superman'>Cart<ShoppingCartOutlinedIcon style={{fontSize:'30px'}}/></h2>
       {cartItems.length === 0 ? (
-        <p className='cart-item'style={{color:'white',fontSize:'20px',textAlign:'center'}}>Your cart is empty.</p>
+        <p className='cart-item' style={{color:'white', fontSize:'20px', textAlign:'center'}}>Your cart is empty.</p>
       ) : (
         <>
           <div className="cart-items">
@@ -132,9 +144,7 @@ const Cart = () => {
                   <h3>{item.Name || 'No Name'}</h3>
                 </div>
                 <div className="item-category">{item.Category || 'N/A'}</div>
-                <div className="item-seller">
-                  {item.Seller}
-                </div>
+                <div className="item-seller">{item.Seller}</div>
                 <div className="item-price">{item.Price}</div>
                 <div className="deltbtn" onClick={() => handleDeleteItem(item._id)}>
                   <DeleteOutlinedIcon style={{ color: iconColor[item._id] || '#000', fontSize: '25px' }} />
@@ -142,15 +152,21 @@ const Cart = () => {
               </div>
             ))}
             <div className="coupon-section">
-              <input type="text" placeholder="Coupon Code" />
+              <input
+                type="text"
+                placeholder="Coupon Code"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+              />
               <button onClick={handleApplyCoupon}>Apply Coupon</button>
+              <p style={{color: 'white', fontWeight: 'bold',marginLeft:'20px'}}>{message}</p>
             </div>
             <div className="cart-total">
               <h3>Cart Summary</h3>
-              <div>Total: ${subtotal}</div>
+              <div>Subtotal: ${subtotal}</div>
               <div>Shipping: Free</div>
-              <div>Subtotal: ${totalWithTax}</div>
-              <button onClick={() => window.location.href = '/checkout'}>Proceed to checkout</button>
+              <div>Total with Tax: ${totalWithTax}</div>
+              <button onClick={() => window.location.href = '/payments'}>Proceed to checkout</button>
             </div>
           </div>
         </>
