@@ -49,14 +49,14 @@ const Profile = () => {
   return (
     <div className="profilepagebro">
       <div className='screenprf'>
-      <div className='accountLinks'>
+      <div className='accounttLinks'>
       <h2>Manage My Account</h2>
       <ul>
         <li>
           <NavLink to="/profile" activeClassName="active-link">My Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/payment-options" activeClassName="active-link">My Payment Options</NavLink>
+          <NavLink to="/payments" activeClassName="active-link">My Payment Options</NavLink>
         </li>
       </ul>
       <h2>My Orders</h2>
@@ -80,7 +80,7 @@ const Profile = () => {
               <h5>Display Name</h5>
               <input 
                 type='text' 
-                placeholder='user.displayName'
+                placeholder='Name'
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
               />  
