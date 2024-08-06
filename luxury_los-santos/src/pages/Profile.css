@@ -13,28 +13,34 @@
     flex-direction: row;
     color: #fff;
 }
-.accountLinks {
+.accounttLinks {
     align-self: flex-start;
     margin-left: 20px;
     margin-top: 10vh;
     color: #fff;
 }
-
-.accountLinks ul {
+.accounttLinks {
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-top: 10vh;
+    color: #fff;
+}
+.accounttLinks ul {
     list-style: none;
     margin-bottom: 8vh;
 }
 
-.accountLinks ul li {
+.accounttLinks ul li{
+    list-style: none;
     margin-bottom: 10px; /* Add some space between list items */
 }
 
-.accountLinks ul li a {
+.accounttLinks ul li a {
     text-decoration: none;
-    color: black; /* Default link color */
+    color: rgb(255, 255, 255); /* Default link color */
 }
 
-.accountLinks ul li a.active-link {
+.accounttLinks ul li a.active-link {
     color: #DB4444; /* Active link color */
 }
 .manageprof{
