@@ -14,6 +14,8 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ScrollToTopButton from './ScrollToTop';
 import GalleryMissions from './Gallery';
 import VideoComp from './VideoComp';
+import jaypic from './../images/jay_pfp';
+import jinilpic from './../images/jinil_pfp';
 const Home = () => {
   const [activeRow, setActiveRow] = useState(null);
 
@@ -181,7 +183,7 @@ const Home = () => {
       <div className='team'>
         <div className='prof' ref={(el) => (sectionRefs.current[4] = el)}>
           <div className='people'>
-            <img src='https://www.viewbug.com/media/mediafiles/2018/01/18/77052177_large.jpg' alt="Jay Raval" />
+            <img src={jaypic} alt="Jay Raval" />
           </div>
           <div className='about'>
             <h1>Jay Raval</h1>
@@ -201,7 +203,7 @@ const Home = () => {
         </div>
         <div className='prof' ref={(el) => (sectionRefs.current[5] = el)}>
           <div className='people'>
-            <img src='https://www.viewbug.com/media/mediafiles/2018/01/18/77052177_large.jpg' alt="Jinil Savaj" />
+            <img src={jinilpic} alt="Jinil Savaj" />
           </div>
           <div className='about'>
             <h1>Jinil Savaj</h1>
