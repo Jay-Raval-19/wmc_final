@@ -22,7 +22,7 @@ const Wishlist = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/get-wishlist?userId=${encodeURIComponent(user.email)}`);
+      const response = await fetch(`https://luxury-los-santos-backend.onrender.com/get-wishlist?userId=${encodeURIComponent(user.email)}`);
       const data = await response.json();
 
       if (response.ok) {
@@ -47,7 +47,7 @@ const Wishlist = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/remove-item-from-wishlist', {
+      const response = await fetch('https://luxury-los-santos-backend.onrender.com/remove-item-from-wishlist', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Wishlist = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/move-wishlist-to-cart', {
+      const response = await fetch('https://luxury-los-santos-backend.onrender.com/move-wishlist-to-cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
