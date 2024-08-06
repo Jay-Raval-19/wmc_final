@@ -1,0 +1,251 @@
+.cont {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #052211;
+}
+
+.image {
+    width: 50%;
+    height: 100%;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    align-self: center;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+    object-position: 95% 50%;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle, #084922 0%, #074d23 11%, #052211 100%);
+}
+
+.logintxt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.recttt {
+    width: 140px;
+    height: 43px;
+    padding: 2px;
+    background-color: #20DC49;
+    border-radius: 5px;
+}
+
+.btn {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.btn img {
+    width: 32px;
+    height: 32px;
+}
+
+.name {
+    width: 400px;
+    height: 70px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.name input {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    background-color: rgba(11, 10, 10, 0.37);
+    padding-left: 15px;
+    border: 1px solid white;
+    color: white;
+}
+
+.password {
+    width: 400px;
+    height: 70px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.password input {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    background-color: rgba(11, 10, 10, 0.37);
+    padding-left: 15px;
+    border: 1px solid white;
+    color: white;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.eye-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.fkuc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.fkuc hr {
+    color: white;
+    width: 120px;
+}
+
+.button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: #20DC49;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 15px;
+    width: inherit;
+    height: 70px;
+    margin-left: 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+}
+
+.button:hover .icon {
+    transform: translate(4px);
+}
+
+.button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+@media (max-width: 768px) {
+    .cont {
+        flex-direction: column;
+    }
+
+    .image, .form {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .image img {
+        border-radius: 0;
+    }
+
+    .logintxt {
+        position: relative;
+        margin: 20px 0 0 20px;
+    }
+
+    .options, .fkuc {
+        flex-direction: row;
+    }
+
+    .puts {
+        width: 90%;
+    }
+
+    .name, .password {
+        width: 80%;
+        max-width: 400px;
+    }
+    .button{
+        margin-left: 45px;
+    }
+}
+@keyframes shine {
+    0% {
+        left: -100px;
+    }
+
+    60% {
+        left: 100%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+.puts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%; /* Ensure it's taking the full width */
+}

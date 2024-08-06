@@ -1,0 +1,82 @@
+.gallery {
+  display: grid;
+  margin-top: 15vh;
+  grid-template-rows: repeat(5, 18vh);
+  grid-template-columns: repeat(2, 45vw);
+  transition: all 0.3s ease;
+  background-color: #5f0d85;
+  border-radius: 10px;
+  padding: 0.25em;
+  cursor: zoom-in;
+
+  @media (min-width: 40em) {
+    grid-template-rows: repeat(2, 20vh);
+  }
+
+  @media (min-width: 10em) and (orientation: landscape) {
+    grid-template-columns: repeat(5, 18vw);
+    grid-template-rows: repeat(2, 45vh);
+  }
+
+  @media (min-width: 60em) {
+    grid-template-columns: repeat(10, 8vw);
+    grid-template-rows: 25vh;
+  }
+}
+
+.mission-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents overflow during scaling */
+}
+
+.mission-container:hover {
+  transform: scale(1.8);
+  z-index: 100;
+  border-radius: 5px;
+}
+
+.mission-container img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  opacity: 1;
+  filter: grayscale(100%) hue-rotate(180deg);
+  z-index: 1; /* Ensure the image is beneath the overlay */
+}
+
+.mission-container:hover img {
+  opacity: 1;
+  box-shadow: 1em 1em 1em #0004;
+  filter: grayscale(0%) hue-rotate(0deg);
+  transform: scale(1.0); /* Adjust scale for a subtle zoom */
+  z-index: 2; /* Image appears above overlay */
+}
+
+.overlay {
+  position: absolute;
+  flex: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom */
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 2em 1em 6em; /* Adjust padding to move text down */
+  box-sizing: border-box;
+  z-index: 0; /* Ensure overlay is beneath image */
+}
+
+.mission-container:hover .overlay {
+  opacity: 1;
+}
+
