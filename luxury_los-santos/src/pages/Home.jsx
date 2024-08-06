@@ -14,8 +14,8 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ScrollToTopButton from './ScrollToTop';
 import GalleryMissions from './Gallery';
 import VideoComp from './VideoComp';
-import jaypic from './../images/jay_pfp';
-import jinilpic from './../images/jinil_pfp';
+import jaypic from './../images/jay_pfp.png';
+import jinilpic from './../images/jinil_pfp.png';
 const Home = () => {
   const [activeRow, setActiveRow] = useState(null);
 
