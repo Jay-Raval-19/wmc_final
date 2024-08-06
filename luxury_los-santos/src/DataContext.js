@@ -9,7 +9,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios.get('http://localhost:3000/fetch-data');
+        const result = await axios.get('https://luxury-los-santos-backend.onrender.com/fetch-data');
         setData(result.data);
       } catch (error) {
         console.error('Error fetching data:', error);
