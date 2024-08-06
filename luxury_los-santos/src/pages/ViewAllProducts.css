@@ -1,0 +1,193 @@
+.viewallp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: black;
+}
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20vh;
+    border-radius: 10px;
+    width: 90%;
+    height: 10vh;
+    background-color: #020202;
+    backdrop-filter: blur(15px) saturate(146%);
+    -webkit-backdrop-filter: blur(15px) saturate(146%);
+    background-color: rgba(18, 94, 112, 0.18);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .filter-bar.scrolled {
+    top: 15vh; /* Adjust this value to how far you want it to move down */
+  }
+  .selcat {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 15%;
+    height: 80%;
+    text-align: center;
+    border-radius: 10px;
+    backdrop-filter: blur(15px) saturate(146%);
+    -webkit-backdrop-filter: blur(15px) saturate(146%);
+    background-color: rgba(78, 200, 137, 0.18);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+  
+  .selcat option {
+    background-color: #222; 
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .selcat:hover, .selcat:focus {
+    background-color: rgba(78, 200, 137, 0.25);
+  }
+  
+  .selcat option:hover {
+    background-color: #fff;
+    color: #020202;
+  }
+  .moneybar{
+    display:flex;
+    width: fit-content;
+    padding: 10px;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#fff;
+    backdrop-filter: blur(15px) saturate(146%);
+    -webkit-backdrop-filter: blur(15px) saturate(146%);
+    background-color: rgba(78, 200, 137, 0.18);
+    border-radius: 10px;
+  }
+  
+  .product-grida {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 50px; /* Space between items */
+    width: 80%;
+    justify-content: center;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+  }
+  .restpp{
+    color: #fff;
+  }
+  .finall{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width:20%;
+    color: #fff;
+  }
+  .product-cardg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 350px;
+    color: white;
+    width: 270px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-cardg:hover {
+    transform: scale(1.05);
+  }
+  
+  .product-cardg:hover .cartt-buttonn {
+    visibility: visible;
+    transform: scale(1);
+    z-index: 30;
+  }
+  
+  .product-cardg:hover .wishlistt-iconn {
+    transform: scale(1.05);
+  }
+  
+  .wishlistt-iconn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    align-self: flex-end;
+    margin-bottom: -40px;
+    margin-right: 10px;
+    z-index: 100;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  .imagee-containerr {
+    position: relative;
+  }
+  
+  .image-container .cart-button {
+    z-index: 10;
+  }
+  
+  .product-cardg img {
+    width: 270px;
+    height: 250px;
+    z-index: 0;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .cartt-buttonn {
+    width: 270px;
+    visibility: hidden;
+    height: 30px;
+    color: #fff;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: -35px;
+    align-self: center;
+  }
+  
+  .productt-infoo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    color: #fff;
+    padding: 10px 15px;
+    box-sizing: border-box;
+  }
+  
+  .productt-infoo img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .productt-infoo h5 {
+    color: white;
+    margin-top: -10px;
+  }
