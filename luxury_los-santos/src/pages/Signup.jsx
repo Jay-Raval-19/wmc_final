@@ -235,7 +235,7 @@ const Signup = () => {
       const user = userCredential.user;
   
       // Send user data to your backend
-      const response = await fetch('http://localhost:3000/sign-up', {
+      const response = await fetch('https://luxury-los-santos-backend.onrender.com/sign-up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
