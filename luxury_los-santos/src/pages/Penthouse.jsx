@@ -152,7 +152,7 @@ const Penthouse = () => {
     try {
         const user = auth.currentUser;
         console.log("ID=", item._id);
-        const response = await axios.post('http://localhost:3000/add-to-cart', { userId: user.email, itemId: item._id });
+        const response = await axios.post('https://luxury-los-santos-backend.onrender.com/add-to-cart', { userId: user.email, itemId: item._id });
   
         if (response.status === 200) {
             alert('Item added to cart successfully');
@@ -165,7 +165,7 @@ const Penthouse = () => {
     try {
         const user = auth.currentUser;
         console.log("ID=", item._id);
-        const response = await axios.post('http://localhost:3000/add-to-wishlist', { userId: user.email, itemId: item._id });
+        const response = await axios.post('https://luxury-los-santos-backend.onrender.com/add-to-wishlist', { userId: user.email, itemId: item._id });
   
         if (response.status === 200) {
             alert('Item added to Wishlist successfully');
