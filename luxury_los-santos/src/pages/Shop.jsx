@@ -375,6 +375,7 @@ const handleAddToWishlist = async (event, item) => {
               key={index}
               src={image}
               alt={`Slide ${index + 1}`}
+              onClick={()=>handleListItemClick('Cars')}
               className={index === currentImageIndex ? 'active' : ''}
             />
           ))}
