@@ -28,6 +28,7 @@ import Penthouse from './pages/Penthouse';
 import ViewAllProducts from './pages/ViewAllProducts';
 import UploadProduct from './pages/UploadProduct';
 import Payments from './pages/Payments';
+import Cheatcodes from './pages/Cheatcodes';
 import { RouteSharp } from '@mui/icons-material';
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path='/loading3' element={<Loading3 />} />
           <Route path='/loading4' element={<Loading4 />} />
           <Route path='/payments' element={<Payments/>}/>
+          <Route path='/cheatcodes' element={<Cheatcodes/>}/>
         </Routes>
       </Layout>
     </BrowserRouter>
