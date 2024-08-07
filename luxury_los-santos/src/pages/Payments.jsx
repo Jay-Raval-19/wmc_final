@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './Payments.css';
+import { useLocation } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_test_51Pkoi9RthmFe68yKJoZ2z3Gcldsz2YB1F5wTpFr4WmV9AISc3Awk6XRECrLTZ2Buy8wp5pDvncgtdsoquhqgNEiO0069Sx83w5');
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const location = useLocation();
+  const { totalWithTax } = location.state || {}; // Destructure totalWithTax with default empty object
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handleCheckout = async (event) => {
     event.preventDefault();
@@ -20,35 +25,20 @@ const CheckoutForm = () => {
 
     setLoading(true);
 
-    // Create a payment intent directly using Stripe's Payment Intents API
-    const { paymentIntent, error: stripeError } = await stripe.confirmCardPayment(
-      stripePromise,
-      {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-        amount: Math.round(1000), // Replace with actual amount
-        currency: 'usd', // Replace with your currency
-      }
-    );
-
-    if (stripeError) {
-      setError(stripeError.message);
+    // Simulate a successful payment for test purposes
+    setTimeout(() => {
       setLoading(false);
-    } else {
-      if (paymentIntent.status === 'succeeded') {
-        setError(null);
-        setLoading(false);
-        // Redirect to payment success page
-        window.location.href = '/payment-success';
-      }
-    }
+      setError(null);
+      setPaymentSuccess(true);
+    }, 2000);
   };
 
   return (
     <form onSubmit={handleCheckout} className="checkout-form">
+      <h3>Total Amount: ${totalWithTax}</h3>
       <CardElement />
       {error && <div className="card-error">{error}</div>}
+      {paymentSuccess && <div className="payment-success">Payment Successful!</div>}
       <button type="submit" disabled={!stripe || loading}>
         {loading ? 'Processing...' : 'Pay Now'}
       </button>
