@@ -179,8 +179,9 @@ const handleAddToWishlist = async (event, item) => {
   useEffect(() => {
     getrandata();
   }, [data]); // Add data to the dependency array to re-run when data changes
-  
-  
+   const navitocheat = () => {
+    navigate('/cheatcodes');
+  };
   const [catd, setCatd] = useState([]);
   const fetchCategoryData = (category) => {
     if (data && data[category]) {
@@ -523,7 +524,7 @@ const handleAddToWishlist = async (event, item) => {
         <h4>Feeling Stuck ?</h4>
         <h1>Enhance Your</h1>
         <h1>Ingame Experience</h1>
-        <div className='buynowbtn'>Buy Now !</div>
+        <div className='buynowbtn' onClick={navitocheat}>Buy Now !</div>
       </div>
       <img src={gc}/>
     </div>
