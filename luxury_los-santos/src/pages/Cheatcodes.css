@@ -1,0 +1,78 @@
+.cheatpage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2d2d2d;
+    color: #ccc;
+  }
+  
+  .terminal {
+    width: 500px;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    height:300px;
+    /* margin: 20px auto; */
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #1d1d1d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  
+  .terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-bottom: 2px solid #444;
+  }
+  
+  .terminal-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .terminal-button.red {
+    background-color: #ff5c5c;
+  }
+  
+  .terminal-button.yellow {
+    background-color: #ffbd4c;
+  }
+  
+  .terminal-button.green {
+    background-color: #00ca56;
+  }
+  
+  .terminal-title {
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .terminal-body {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ccc;
+    background-color: #1d1d1d;
+  }
+  
+  .terminal-line {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terminal-prompt {
+    color: #00ff00;
+    margin-right: 10px;
+  }
+  
