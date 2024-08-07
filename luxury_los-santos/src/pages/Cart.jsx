@@ -6,10 +6,8 @@ import { auth } from '../firebaseconfig';
 import cartbg from './../images/cartbg.jpg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ScrollToTop from './ScrollToTop';
-import { Link, useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [deletedItems, setDeletedItems] = useState([]);
@@ -94,10 +92,7 @@ const Cart = () => {
       console.error('Error:', error);
     }
   };
-  const navitoall =()=>{
-    navigate('/payments');
-  };
-
+  
   const handleApplyCoupon = () => {
     const validCheatCodes = ['CHEAT20','BUZZOFF'];
 
@@ -158,7 +153,7 @@ const Cart = () => {
               <div>Subtotal: ${subtotal}</div>
               <div>Shipping: Free</div>
               <div>Total with Tax: ${totalWithTax}</div>
-              <button onClick={() => navitoall()}>Proceed to checkout</button>
+              <button>Proceed to checkout</button>
             </div>
           </div>
         </>
