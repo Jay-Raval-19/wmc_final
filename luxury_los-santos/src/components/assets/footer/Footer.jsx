@@ -38,7 +38,7 @@ const Footer = () => {
             <Link to='/profile' style={{color:'white', textDecoration:'none'}}>My Account</Link>  
           </div>
           <div className="text">
-            <Link to='/loginsignup' style={{color:'white', textDecoration:'none'}}>Login / Register</Link>  
+            <Link to='/signup' style={{color:'white', textDecoration:'none'}}>Login / Register</Link>  
           </div>
           <div className="text">
             <Link to='/cart' style={{color:'white', textDecoration:'none'}}>Cart</Link>  
@@ -53,11 +53,11 @@ const Footer = () => {
         </div>
 
         <div className="col">
-          <div className="title">Categories</div>
-          <div className="text">Cars</div>
-          <div className="text">Boats</div>
-          <div className="text">Planes</div>
-          <div className="text">Properties</div>
+          <div className="title"><Link to='/shop' style={{color:'white', textDecoration:'none'}}>Categories</Link></div>
+          <div className="text"><Link to='/shop' style={{color:'white', textDecoration:'none'}}>Cars</Link></div>
+          <div className="text"><Link to='/shop' style={{color:'white', textDecoration:'none'}}>Boats</Link></div>
+          <div className="text"><Link to='/shop' style={{color:'white', textDecoration:'none'}}>Planes</Link></div>
+          <div className="text"><Link to='/shop' style={{color:'white', textDecoration:'none'}}>Properties</Link></div>
         </div>
 
         <div className="col">
