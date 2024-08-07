@@ -53,7 +53,9 @@ const Navbar = () => {
       setSearchResults([]);
     }
   };
-
+  const navitoall =()=>{
+    navigate('/shop');
+  }
   const handleProductClick = (product) => {
     const productIdentifier = encodeURIComponent(product.Name);
     const path = `/${product.Category.toLowerCase()}/${productIdentifier}`;
@@ -67,9 +69,9 @@ const Navbar = () => {
           Sale For All Properties And Free Reward on Purchase &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
         <u>
-          <a href='/shop' style={{ textDecoration: 'none', color: '#000', paddingRight: '30vw' }}>
+          <p onClick={()=>navitoall()}  style={{ textDecoration: 'none', color: '#000', paddingRight: '30vw' }}>
             ShopNow
-          </a>
+          </p>
         </u>
       </div>
       <div className='navbar'>
