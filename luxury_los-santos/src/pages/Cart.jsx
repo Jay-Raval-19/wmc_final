@@ -6,10 +6,8 @@ import { auth } from '../firebaseconfig';
 import cartbg from './../images/cartbg.jpg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ScrollToTop from './ScrollToTop';
-import { Link, useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [deletedItems, setDeletedItems] = useState([]);
@@ -20,7 +18,6 @@ const Cart = () => {
   const [totalWithTax, setTotalWithTax] = useState(0);
   
   const user = auth.currentUser;
-
   // Function to calculate subtotal
   const calculateSubtotal = () => {
     let total = 0;
@@ -30,17 +27,14 @@ const Cart = () => {
     });
     return total.toFixed(2);
   };
-
   const handleGetCart = async () => {
     if (!user) {
       setError('User not authenticated.');
       return;
     }
-
     try {
       const response = await fetch(`https://luxury-los-santos-backend.onrender.com/get-cart?userId=${encodeURIComponent(user.email)}`);
       const data = await response.json();
-
       if (response.ok) {
         if (Array.isArray(data)) {
           setCartItems(data);
@@ -59,23 +53,19 @@ const Cart = () => {
       console.error("Error:", error);
     }
   };
-
   useEffect(() => {
     handleGetCart();
   }, [user]);
-
   useEffect(() => {
     setSubtotal(calculateSubtotal());
     const tax = 0.18;
     setTotalWithTax((parseFloat(subtotal) + parseFloat(subtotal) * tax).toFixed(2));
   }, [cartItems, subtotal]);
-
   const handleDeleteItem = async (itemId) => {
     if (!user) {
       setError('User not authenticated.');
       return;
     }
-
     try {
       const response = await fetch('https://luxury-los-santos-backend.onrender.com/remove-item-from-cart', {
         method: 'DELETE',
@@ -87,13 +77,10 @@ const Cart = () => {
           itemId: itemId,
         }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
-
       if (response.ok) {
         setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
         setDeletedItems((prevDeleted) => [...prevDeleted, itemId]);
@@ -105,9 +92,7 @@ const Cart = () => {
       console.error('Error:', error);
     }
   };
-  const navitoall =()=>{
-    navigate('/payments');
-  }
+
   const handleApplyCoupon = () => {
     const validCheatCodes = ['CHEAT20','BUZZOFF'];
 
@@ -120,11 +105,9 @@ const Cart = () => {
       setMessage('Invalid coupon code.');
     }
   };
-
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   return (
     <div className="cartpage">
       <ScrollToTop/>
@@ -170,15 +153,7 @@ const Cart = () => {
               <div>Subtotal: ${subtotal}</div>
               <div>Shipping: Free</div>
               <div>Total with Tax: ${totalWithTax}</div>
-              <button onClick={() => navitoall()}>Proceed to checkout</button>
+              <button onClick={() => window.location.href = '/payments'}>Proceed to checkout</button>
             </div>
           </div>
         </>
-      )}
-    </div>
-  );
-};
-
-Cart.propTypes = {};
-
-export default Cart;
