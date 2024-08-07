@@ -6,8 +6,10 @@ import { auth } from '../firebaseconfig';
 import cartbg from './../images/cartbg.jpg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ScrollToTop from './ScrollToTop';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [deletedItems, setDeletedItems] = useState([]);
@@ -92,6 +94,9 @@ const Cart = () => {
       console.error('Error:', error);
     }
   };
+  const navitoall =()=>{
+    navigate('/payments');
+  };
 
   const handleApplyCoupon = () => {
     const validCheatCodes = ['CHEAT20','BUZZOFF'];
@@ -108,7 +113,7 @@ const Cart = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  return (
+ return (
     <div className="cartpage">
       <ScrollToTop/>
       <h2 className='superman'>Cart<ShoppingCartOutlinedIcon style={{fontSize:'30px'}}/></h2>
@@ -153,7 +158,15 @@ const Cart = () => {
               <div>Subtotal: ${subtotal}</div>
               <div>Shipping: Free</div>
               <div>Total with Tax: ${totalWithTax}</div>
-              <button onClick={() => window.location.href = '/payments'}>Proceed to checkout</button>
+              <button onClick={() => navitoall()}>Proceed to checkout</button>
             </div>
           </div>
         </>
+      )}
+    </div>
+  );
+};
+
+Cart.propTypes = {};
+
+export default Cart;
