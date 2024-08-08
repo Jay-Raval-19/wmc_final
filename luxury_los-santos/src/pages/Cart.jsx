@@ -37,7 +37,7 @@ const Cart = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/get-cart?userId=${encodeURIComponent(user.email)}`);
+      const response = await fetch(`https://luxury-los-santos-backend.onrender.com/get-cart?userId=${encodeURIComponent(user.email)}`);
       const data = await response.json();
 
       if (response.ok) {
@@ -77,7 +77,7 @@ const Cart = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/remove-item-from-cart', {
+      const response = await fetch('https://luxury-los-santos-backend.onrender.com/remove-item-from-cart', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
