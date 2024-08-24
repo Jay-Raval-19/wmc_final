@@ -262,7 +262,7 @@ const handleAddToWishlist = async (event, item) => {
   });
 
   useEffect(() => {
-    const countdownDate = new Date('2024-08-08T22:00:00').getTime();
+    const countdownDate = new Date('2024-08-27T00:00:00').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
