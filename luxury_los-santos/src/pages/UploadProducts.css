@@ -1,0 +1,137 @@
+.UploadProduct {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.UploadProduct form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.UploadProduct label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.UploadProduct [type="text"], input[type="number"], input[type="file"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+.UploadProduct textarea {
+    height: 100px;
+    resize: none;
+}
+
+.UploadProduct input[type="submit"] {
+    background-color: #DB4444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.UploadProduct input[type="submit"]:hover {
+    background-color: #a83535;
+}
+
+.UploadProduct h3 {
+    margin-bottom: 20px;
+}
+.UploadProduct .file-input {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.UploadProduct .file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.UploadProduct .file-input label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DB4444;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.UploadProduct .file-input label:hover {
+    background-color: #a83535;
+}
+
+.UploadProduct .file-input span {
+    display: block;
+    margin-top: 10px;
+    color: #ccc;
+}
+.UploadProduct .form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.UploadProduct #dynamicForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.UploadProduct select {
+    background-color: #333;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .UploadProduct {
+        padding: 10px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+}
