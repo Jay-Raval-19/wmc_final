@@ -126,12 +126,12 @@
         padding: 10px;
     }
 
-    form {
+    .UploadProduct form {
         width: 100%;
         max-width: 100%;
     }
 
-    input[type="submit"] {
+    .UploadProduct input[type="submit"] {
         width: 100%;
     }
 }
